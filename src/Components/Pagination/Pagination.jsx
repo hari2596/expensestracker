@@ -1,31 +1,31 @@
-import styles from './Pagination.module.css'
-import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
+import React from 'react';
+import { IoIosArrowRoundBack, IoIosArrowRoundForward } from 'react-icons/io';
+import styles from './Pagination.module.css';
 
-export default function Pagination({ updatePage, currentPage, totalPages }) {
-
-    const handlePrev = () => {
-        if(currentPage > 1){
-            updatePage(prev => prev - 1)
-        }
+const Pagination = ({ updatePage, currentPage, totalPages }) => {
+  const goToPreviousPage = () => {
+    if (currentPage > 1) {
+      updatePage(prevPage => prevPage - 1);
     }
+  };
 
-    const handleNext = () => {
-        if(totalPages != currentPage){
-            updatePage(prev => prev + 1)
-        }
+  const goToNextPage = () => {
+    if (totalPages !== currentPage) {
+      updatePage(prevPage => prevPage + 1);
     }
+  };
 
-    return (
-        <div className={styles.paginationWrapper}>
-            <button onClick={handlePrev} disabled={currentPage == 1}>
-                <IoIosArrowRoundBack />
-            </button>
+  return (
+    <div className={styles.paginationWrapper}>
+      <button onClick={goToPreviousPage} disabled={currentPage === 1}>
+        <IoIosArrowRoundBack />
+      </button>
+      <p>{currentPage}</p>
+      <button onClick={goToNextPage} disabled={totalPages === currentPage}>
+        <IoIosArrowRoundForward />
+      </button>
+    </div>
+  );
+};
 
-            <p>{currentPage}</p>
-
-            <button onClick={handleNext} disabled={totalPages == currentPage}>
-                <IoIosArrowRoundForward />
-            </button>
-        </div>
-    )
-}
+export default Pagination;

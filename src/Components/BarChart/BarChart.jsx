@@ -2,11 +2,9 @@ import React from "react";
 import {
   BarChart,
   Bar,
- 
-  XAxis,
+   XAxis,
   YAxis,
-  
-  ResponsiveContainer,
+    ResponsiveContainer,
 } from "recharts";
 import styles from "./BarChart.module.css";
 
